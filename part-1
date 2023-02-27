@@ -1,0 +1,337 @@
+import random
+import time
+#from datetime import date
+#date.today().year
+
+
+cores = {'branco':'\033[30m',
+         'vermelho':'\033[31m',
+         'verde':'\033[32m',
+         'amarelo':'\033[33m',
+         'azul':'\033[34m',
+         'lilas':'\033[35m',
+         'ciano':'\033[36m',
+         'cinza':'\033[37m',
+         'limpa':'\033[m'}
+
+
+
+print("Este jogo se chama: RPG do Transcendente")
+print(' ')
+print('Vamos começar com algo divertido...')
+time.sleep(1)
+print(' ')
+computador = random.randint(1, 2)
+print('-----===' * 16)
+print('A sorte é um fator muito importante para a vida. Vou pensar em 1 ou 2 e você tera que adivinhar isso pelo menos 1 das 3 vezes.')
+print('-----===' * 16)
+jogador = int(input('Em que número pensei?'))
+print('PROCESSANDO',end='')
+time.sleep(0.5)
+print('.',end='')
+time.sleep(0.5)
+print('.',end='')
+time.sleep(0.5)
+print('.')
+time.sleep(1)
+print(' ')
+if jogador == computador:
+    print('Parabens voce conseguiu a primeira, veremos se acertará a proxima...')
+    print('GOD = 0')
+    print('Humano = 1')
+    GOD = 0
+    Humano = 1
+else:
+    print('GANHEI! Pensei no numero {} e não no {}!'.format(computador, jogador))
+    print('GOD = 1')
+    print('Humano = 0')
+    GOD = 1
+    Humano = 0
+print(' ')
+print('Segundo rodada.')
+jogador = int(input('Em que número pensei?'))
+print('PROCESSANDO',end='')
+time.sleep(0.5)
+print('.',end='')
+time.sleep(0.5)
+print('.',end='')
+time.sleep(0.5)
+print('.')
+time.sleep(1)
+print(' ')
+if jogador == computador and Humano == 1:
+    print('Pelo visto você tem muita sorte...')
+    time.sleep(1)
+    print('Caso você acerte a proxima darei uma recompensa um pouco melhor.')
+    Humano = Humano + 1
+    print('GOD = {}'.format(GOD))
+    print('Humano = {}'.format(Humano))
+elif jogador == computador:
+    print('Parabéns por acertar a segunda rodada, veremos se acertará a proxima...')
+    Humano = Humano + 1
+    print('GOD = {}'.format(GOD))
+    print('Humano = {}'.format(Humano))
+else:
+    print('GANHEI! Pensei no numero {} e não no {}!'.format(computador, jogador))
+    GOD = GOD + 1
+    print('GOD = {}'.format(GOD))
+    print('Humano = {}'.format(Humano))
+print(' ')
+print('Terceira rodada.')
+jogador = int(input('Em que número pensei?'))
+print('PROCESSANDO',end='')
+time.sleep(0.5)
+print('.',end='')
+time.sleep(0.5)
+print('.',end='')
+time.sleep(0.5)
+print('.')
+time.sleep(1)
+print(' ')
+if jogador == computador and Humano == 2:
+    print('Pelo visto você realmente tem muita sorte...')
+    time.sleep(2)
+    print('Como prometido você ira receber uma boa recompensa ja que fez algo que so tinha 12,5% de chance atingir.')
+    Humano = Humano + 1
+    print('GOD = {}'.format(GOD))
+    print('Humano = {}'.format(Humano))
+elif jogador == computador:
+    print('Parabéns por acertar a terceira rodada.')
+    Humano = Humano + 1
+    print('GOD = {}'.format(GOD))
+    print('Humano = {}'.format(Humano))
+else:
+    print('GANHEI! Pensei no numero {} e não no {}!'.format(computador, jogador))
+    GOD = GOD + 1
+    print('GOD = {}'.format(GOD))
+    print('Humano = {}'.format(Humano))
+print(' ')
+print('PROCESSANDO',end='')
+time.sleep(0.5)
+print('.',end='')
+time.sleep(0.5)
+print('.',end='')
+time.sleep(0.5)
+print('.')
+time.sleep(1)
+print(' ')
+if GOD == 3:
+    print('Tenha mais sorte na proxima.')
+    quit('\033[31m GAME OVER\033[m')
+elif GOD == 2:
+    print('Já que conseguiu acertar pelo menos uma deixarei continuar com o jogo.')
+    M = 0
+elif GOD == 1:
+    print('Você até que é bem sortudo, por isso lhe darei {}5 moedas{}'.format(cores['amarelo'], cores['limpa']))
+    M = 10
+elif GOD == 0:
+    print('Você acertou todas e por isso merece uma grande recompensa, lhe darei {}15 moedas.{}'.format(cores['amarelo'], cores['limpa']))
+    M = 20
+time.sleep(2)
+print(" ")
+print("Você está em uma sala quadrada e ganhou 20 moedas de início")
+M += 20
+print(f'Totalizando {M} moedas.')
+print("""⬛⬛⬛⬛⬛⬛🚪⬛⬛⬛⬛⬛⬛
+⬛                         ⬛ 
+⬛                         ⬛ 
+⬛                         ⬛ 
+⬛      (͠≖ ͜ʖ͠≖)👌        🚪 
+⬛                         ⬛ 
+⬛                         ⬛ 
+⬛                         ⬛ 
+⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛ """)
+
+print("")
+arriscar = input("Você gostaria de apostar suas moedas para dobrar ou dividir seu valor? Digite [s ou n]: ").upper().strip()
+if arriscar == "s" or arriscar == "S":
+    print("Você perdeu metade de suas moedas!!! Agora você tem apenas {}{}{}".format(cores['amarelo'], M, cores['limpa']))
+    M = M/2
+elif arriscar == "n" or arriscar == "N":
+    print("Parabéns!!! Você não perdeu nenhuma moeda")
+else:
+    print("Não entendi o que você disse, recomece o jogo por favor.")
+    quit()
+
+escolha1 = str(input("Na sala há 2 portas, você pode escolher entre ir para frente ou ir para o lado direito. Digite [f ou ld]: "))
+
+if escolha1 == "f" or escolha1 == "F":
+    print('''
+    ⬛⬛⬛⬛⬛⬛⬛⬛⬛ 
+    ⬛                ⬛ 
+    ⬛        😈      ⬛ 
+    ⬛                🚪 
+    ⬛                ⬛ 
+    ⬛    (͠≖ ͜ʖ͠≖)   ⬛ 
+    ⬛⬛⬛⬛🚪⬛⬛⬛⬛ ''')
+    mosntro = str(input("Você encontrou um demonio, deseja lutar ou voltar para a sala anterior? [l ou v]: "))
+    if mosntro == "l" or mosntro == "L":
+        print("Você morreu. Tente outra vez")
+        quit('\033[31m GAME OVER\033[m')
+    elif mosntro == "v" or mosntro == "V":
+        print("Você voltou para a sala anterior e entrou na outra sala, nela há um baú.")
+    else:
+        print("Não entendi o que você disse, recomece o jogo por favor.")
+        quit()
+
+elif escolha1 == "ld" or escolha1 == "LD":
+    print("Você entrou em uma sala, nela há um baú.")
+
+else:
+    input("Não entendi o que você disse, recomece o jogo por favor.")
+    quit()
+
+print("""⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛ 
+⬛                   ⬛ 
+⬛                   ⬛ 
+🚪(͠≖ ͜ʖ͠≖)👌    🎁  ⬛ 
+⬛                   ⬛ 
+⬛                   ⬛ 
+⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛ """)
+print("Para você abrir o baú você deve acertar esta pergunta:")
+P1 = input("Qual a capital da Alemanha?")
+
+if P1 == "Berlin" or P1 == "Berlim" or P1 == "berlin" or P1 == "berlim":
+    print('PROCESSANDO', end='')
+    time.sleep(0.4)
+    print('.', end='')
+    time.sleep(0.4)
+    print('.', end='')
+    time.sleep(0.4)
+    print('.')
+    time.sleep(0.8)
+    print('{}Você acertou a resposta{}, Você acaba de ganhar uma {}espada sagrada{} (A subjulgadora de demonios){}, com apenas {}1 de durabilidade{}.'.format(cores['verde'], cores['limpa'], cores['branco'], cores['lilas'], cores['limpa'], '\033[1;40m', cores['limpa']))
+else:
+    print('PROCESSANDO', end='')
+    time.sleep(0.4)
+    print('.', end='')
+    time.sleep(0.4)
+    print('.', end='')
+    time.sleep(0.4)
+    print('.')
+    time.sleep(0.8)
+    print("Você errou. Cai um espinho em sua cabeça e você morre.")
+    quit('\033[31m GAME OVER\033[m')
+
+print("""🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🔳🔳🟨
+🟨🟨🟨🟨🟨🟨🟨🟨🟨🔳🔳🔳🟨
+🟨🟨🟨🟨🟨🟨🟨🟨⬛️🔳🔳🟨🟨
+🟨🟨🟨🟨🟨🟨🟨⬛️⬛️⬛️🟨🟨🟨
+🟨🟨🟨🟫🟨🟨⬛️⬛️⬛️🟨🟨🟨🟨
+🟨🟨🟨🟫🟫⬛️⬛️⬛️🟨🟨🟨🟨🟨
+🟨🟨🟨🟫🟫⬛️⬛️🟨🟨🟨🟨🟨🟨
+🟨🟨🟨🟪🟪🟫🟫🟨🟨🟨🟨🟨🟨
+🟨🟨🟪🟪🟪🟫🟫🟫🟨🟨🟨🟨🟨
+🟨🟪🟪🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨
+🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨""")
+print("")
+print("Voce voltou para a sala inicial e entrou na porta da frente, nela há um demonio de baixo nivel.")
+print("""⬛⬛⬛⬛⬛⬛⬛⬛⬛ 
+⬛                ⬛ 
+⬛        😈      ⬛ 
+⬛                🚪 
+⬛                ⬛ 
+⬛    (͠≖ ͜ʖ͠≖)╽  ⬛ 
+⬛⬛⬛⬛🚪⬛⬛⬛⬛ """)
+print("")
+P2 = input("Você deseja enfrentar o demonio?[s ou n] ")
+if P2 == "s" or P2 == "S":
+    M += 10
+    print("Parabéns pela sua coragem, por essa escolha você ganhará mais 10 moedas, totalizando a {}{}{} moedas".format(cores['amarelo'], M, cores['limpa']))
+elif P2 == "n" or P2 == "N":
+    M -= 10
+    print("Por sua falta de confiança você perderá 10 moedas e terá que ir enfrentar o monstro, totalizando a {}{}{} moeda(s)".format(cores['amarelo'], M, cores['limpa']))
+else:
+    print("Não entendi o que você disse, recomece o jogo por favor.")
+    quit()
+
+print("")
+
+print("Suas moedas são iguais a sua força e caso você atinja moedas negativas é o mesmo que {}GAME OVER{}. {}Cuidado!{}".format(cores['vermelho'], cores['limpa'],cores['ciano'], cores['limpa']))
+print('Atualmente o demonio tem {}100 moeda{} enquanto você tem apenas: {}{}{} moeda(s). Não se abale por isso, com A subjulgadora de demonios basta você desferir um acerto critico.'.format(cores['amarelo'], cores['limpa'], cores['amarelo'], M, cores['limpa']))
+print("")
+calculo = input("Para fazer este acerto critico basta acertar este simples calculo de bhaskara 2 x²+ 12 x+ 18 =0 , que obviamente é: ")
+
+if calculo == '-3':
+    print('Voce conseguiu matar o demonia!!!')
+elif calculo == '3':
+    print('Voce errou apenas um sinal, mas conseguiu por sorte matar o demonio.')
+else:
+    print('PROCESSANDO...')
+    time.sleep(2)
+    quit('\033[31m GAME OVER\033[m')
+M += 20
+print('Você ganhou {}20 moedas{} por ter passado desta sala, agora voce tem {}{} moedas{}.'.format('\033[4;33m', cores['limpa'], cores['amarelo'], M, cores['limpa']))
+print(' ')
+print('Agora tudo o que resta é seguir em frente e entrar na proxima sala.')
+print('PROCESSANDO', end='')
+time.sleep(0.5)
+print('.', end='')
+time.sleep(0.5)
+print('.', end='')
+time.sleep(0.5)
+print('.')
+time.sleep(1)
+print(' ')
+print('Esta sala sera um quiz, você deve acertar a pergunta para passar pela porta e caso erra perderá {}10 moedas{}.'.format(cores['amarelo'], cores['limpa']))
+print('{}NÃO ESQUEÇA{}, caso você fique negativo é o mesmo que {}GAME OVER{}'.format(cores['ciano'], cores['limpa'], cores['vermelho'], cores['limpa']))
+print("""⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
+⬛            ⬛   ⬛   🚪   🚪  ⬛ 
+⬛            ⬛    🚪  ⬛   🚪  ⬛ 
+⬛            🚪   ⬛   🚪   🚪  ⬛ 
+🚪(͠≖ ͜ʖ͠≖)    ⬛   🚪  ⬛   ⬛  🚪 
+⬛            🚪   ⬛   🚪   🚪  ⬛ 
+⬛            ⬛   🚪   ⬛   🚪  ⬛ 
+⬛            ⬛   ⬛   🚪   🚪  ⬛ 
+⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛ """)
+print('Você deve escrever a resposta apenas com o numero.')
+print()
+count = 0
+print('Pergunta 1 - Quem nasceu primeiro?')
+p1 = int(input('1- O ovo | 2- A galinha :'))
+if p1 == '1':
+    print('PARABENS, você acertou.')
+    count += 1
+elif p1 == '2':
+    M -= 10
+    print('Você ERROU, moedas totais igual a {}'.format(M))
+else:
+    quit('Comando invalido, recomece.')
+print('')
+print('Pergunta 2 - Em um jogo de Jo-Ken-Po em que eu não possa usar tesoura, qual seria a melhor escolha para ganhar?')
+p2 = int(input('1- Pedra | 2- Papel | 3- Tesoura'))
+if p2 == '2':
+    print('PARABENS, você acertou.')
+    count += 1
+elif p2 == '1' or p2 == '3':
+    M -= 10
+    print('Você ERROU, moedas totais igual a {}'.format(M))
+else:
+    quit('Comando invalido, recomece.')
+print()
+print('Pergunta 3 - Qual desses valores representa o numero 13 em numero binario?')
+p3 = int(input('1- 1011 | 2- 1100 | 3- 1101 | 4- 1110'))
+if p3 == '3':
+    print('PARABENS, você acertou.')
+    count += 1
+elif p3 == '1' or p3 == '2' or p3 == '4':
+    M -= 10
+    print('Você ERROU, moedas totais igual a {}'.format(M))
+else:
+    quit('Comando invalido, recomece.')
+print('')
+print('Esta preparado para a ultima pergunta?')
+time.sleep(1)
+print('Pergunta 4 - Qual das formulas a baixo foi utilizada para criar a bomba nuclear?')
+p4 = int(input('1- F = G(m₁m₂/d²) | 2- V = IR | 3- F = ma | 4- F = k(q₁q₂/d²) | 5- E = mc² | 6- HΨ = EΨ'))
+if p4 == '5':
+    print('PARABENS, você acertou.')
+    count += 1
+elif p4 in '12346':
+    M -= 10
+    print(f'Você ERROU, moedas totais igual a {M}')
+else:
+    quit('Comando invalido, recomece.')
+time.sleep(1.5)
+print(f'Voce passou por todas as portas, acertou {count} e ficou no final com {M} moedas.')
