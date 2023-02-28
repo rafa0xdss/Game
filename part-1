@@ -335,3 +335,4 @@ else:
     quit('Comando invalido, recomece.')
 time.sleep(1.5)
 print(f'Voce passou por todas as portas, acertou {count} e ficou no final com {M} moedas.')
+print('Obrigado por ter jogado até o final da primeira parte do jogo.')
